@@ -1,16 +1,16 @@
 package oneid
 
 import (
-	requests "git.onespace.co.th/osgolib/http-requests"
 	"github.com/labstack/echo/v4"
+	requests "github.com/onespacegolib/http-requests"
 	"net/url"
 	"strings"
 )
 
 func (c *context) All(businesses *ResponseBusinesses) Context {
 	if err := requests.Call().Get(requests.Params{
-		URL:     c.apiEndpoint(APIEndpointBusinesses),
-		BODY:    nil,
+		URL:  c.apiEndpoint(APIEndpointBusinesses),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -32,8 +32,8 @@ func (c *context) Departments(bizId string, departments *ResponseDepartments) Co
 	base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     base.String(),
-		BODY:    nil,
+		URL:  base.String(),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -57,8 +57,8 @@ func (c *context) Department(deptId string, bizId string, department *ResponseDe
 	base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     base.String(),
-		BODY:    nil,
+		URL:  base.String(),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -80,8 +80,8 @@ func (c *context) Roles(bizId string, roles *ResponseRoles) Context {
 	base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     base.String(),
-		BODY:    nil,
+		URL:  base.String(),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -105,8 +105,8 @@ func (c *context) Role(roleId string, bizId string, role *ResponseRole) Context 
 	base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     base.String(),
-		BODY:    nil,
+		URL:  base.String(),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -128,8 +128,8 @@ func (c *context) DepartmentAndRoles(bizId string, deptRole *ResponseDepartmentA
 	base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     base.String(),
-		BODY:    nil,
+		URL:  base.String(),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -153,8 +153,8 @@ func (c *context) DepartmentAndRole(deptRoleId string, bizId string, deptRole *R
 	base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     base.String(),
-		BODY:    nil,
+		URL:  base.String(),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
