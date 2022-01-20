@@ -1,14 +1,14 @@
 package oneid
 
 import (
-	requests "git.onespace.co.th/osgolib/http-requests"
 	"github.com/labstack/echo/v4"
+	requests "github.com/onespacegolib/http-requests"
 )
 
 func (c *context) GetAccount(account *ResponseGetAccount) Context {
 	if err := requests.Call().Get(requests.Params{
-		URL:     c.apiEndpoint(APIEndpointAccount),
-		BODY:    nil,
+		URL:  c.apiEndpoint(APIEndpointAccount),
+		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
 			echo.HeaderAuthorization: c.bearer,
@@ -24,10 +24,10 @@ func (c *context) GetAccount(account *ResponseGetAccount) Context {
 func (c *context) GetServiceCitizenInfo(info *ResponseServiceCitizenInfo) Context {
 
 	if err := requests.Call().Get(requests.Params{
-		URL:     c.apiEndpoint(APIEndpointServiceCitizenInfo),
-		BODY:    nil,
+		URL:  c.apiEndpoint(APIEndpointServiceCitizenInfo),
+		BODY: nil,
 		HEADERS: map[string]string{
-			echo.HeaderAccept:   "application/json",
+			echo.HeaderAccept:        "application/json",
 			echo.HeaderAuthorization: c.bearer,
 		},
 		TIMEOUT: 5,
@@ -37,4 +37,3 @@ func (c *context) GetServiceCitizenInfo(info *ResponseServiceCitizenInfo) Contex
 	}
 	return c.handleRes(resRequest, &info)
 }
-

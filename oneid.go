@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"git.onespace.co.th/osgolib/http-requests"
 	"github.com/labstack/echo/v4"
+	requests "github.com/onespacegolib/http-requests"
 	"strconv"
 )
 
@@ -73,16 +73,16 @@ type ResBase struct {
 
 func (c *context) CheckServiceClient(client CheckServiceClient) bool {
 	if err := requests.Call().Post(requests.Params{
-		URL:     c.apiEndpoint(APIEndpointOAuthPWD),
+		URL: c.apiEndpoint(APIEndpointOAuthPWD),
 		HEADERS: map[string]string{
 			echo.HeaderContentType: "application/json",
 		},
 		BODY: c.jsonBody(map[string]interface{}{
-			"grant_type": "password",
-			"client_id": client.ClientID,
+			"grant_type":    "password",
+			"client_id":     client.ClientID,
 			"client_secret": client.ClientSecret,
-			"username": `mocking03193`,
-			"password": `mocking03193`,
+			"username":      `mocking03193`,
+			"password":      `mocking03193`,
 		}),
 		TIMEOUT: 30,
 	}, &resRequest).Error(); err != nil {

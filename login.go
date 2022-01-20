@@ -3,9 +3,9 @@ package oneid
 import (
 	"encoding/json"
 	"fmt"
-	requests "git.onespace.co.th/osgolib/http-requests"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
+	requests "github.com/onespacegolib/http-requests"
 	"net/url"
 )
 

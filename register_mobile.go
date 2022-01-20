@@ -1,8 +1,8 @@
 package oneid
 
 import (
-	requests "git.onespace.co.th/osgolib/http-requests"
 	"github.com/labstack/echo/v4"
+	requests "github.com/onespacegolib/http-requests"
 )
 
 func (c *context) RegisterMobile(mobileNo string, res *ResponseRegisterMobile) Context {
