@@ -158,6 +158,25 @@ func TestContext_GetSharedToken(t *testing.T) {
 	assert.NotEmpty(t, shared.Data.SharedToken)
 }
 
+func TestContext_AllBranch(t *testing.T) {
+	pwd := PWD{
+		Username: "mpminimal",
+		Password: "mp12345678",
+	}
+	var res ResponseLoginPwdOne
+	if err := oneId.LoginPWD(pwd, &res).Error(); err != nil {
+		panic(err)
+	}
+	assert.Equal(t, pwd.Username, res.Username)
+
+	var allBranchBusiness ResponseAllBranchBusiness
+	if err := oneId.Bearer(res.AccessToken).Business().AllBranch(`3467976236700`, &allBranchBusiness).Error(); err != nil {
+		//printStructJson(err)
+	}
+
+	printStructJson(allBranchBusiness)
+}
+
 func TestContext_Businesses(t *testing.T) {
 	pwd := PWD{
 		Username: "mpminimal",
@@ -196,26 +215,6 @@ func TestContext_Departments(t *testing.T) {
 	printStructJson(departments)
 }
 
-
-func TestContext_DepartmentsByTaxId(t *testing.T) {
-	pwd := PWD{
-		Username: "mpminimal",
-		Password: "mp12345678",
-	}
-	var res ResponseLoginPwdOne
-	if err := oneId.LoginPWD(pwd, &res).Error(); err != nil {
-		panic(err)
-	}
-	assert.Equal(t, pwd.Username, res.Username)
-
-	var departments ResponseDepartments
-	if err := oneId.Bearer(res.AccessToken).Business().DepartmentsByTaxId(`3467976236700`, &departments).Error(); err != nil {
-		//printStructJson(err)
-	}
-
-	printStructJson(departments)
-}
-
 func TestContext_Roles(t *testing.T) {
 	pwd := PWD{
 		Username: "mpminimal",
@@ -229,25 +228,6 @@ func TestContext_Roles(t *testing.T) {
 
 	var roles ResponseRoles
 	if err := oneId.Bearer(res.AccessToken).Business().Roles(`1605248760`, &roles).Error(); err != nil {
-		//printStructJson(err)
-	}
-
-	printStructJson(roles)
-}
-
-func TestContext_RolesByTaxId(t *testing.T) {
-	pwd := PWD{
-		Username: "mpminimal",
-		Password: "mp12345678",
-	}
-	var res ResponseLoginPwdOne
-	if err := oneId.LoginPWD(pwd, &res).Error(); err != nil {
-		panic(err)
-	}
-	assert.Equal(t, pwd.Username, res.Username)
-
-	var roles ResponseRoles
-	if err := oneId.Bearer(res.AccessToken).Business().RolesByTaxId(`3467976236700`, &roles).Error(); err != nil {
 		//printStructJson(err)
 	}
 

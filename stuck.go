@@ -582,3 +582,15 @@ type ResponseBusinesses struct {
 	ErrorMessage interface{} `json:"errorMessage"`
 	Code         int         `json:"code"`
 }
+
+type ResponseAllBranchBusiness struct {
+	Result string `json:"result"`
+	Data   []struct {
+		BizId            string `json:"biz_id"`
+		NameOnDocumentTh string `json:"name_on_document_th"`
+		BranchNo         string `json:"branch_no"`
+		BranchName       string `json:"branch_name"`
+	} `json:"data"`
+	ErrorMessage interface{} `json:"errorMessage"`
+	Code         int         `json:"code"`
+}
