@@ -46,6 +46,29 @@ func (c *context) Departments(bizId string, departments *ResponseDepartments) Co
 	return c.handleRes(resRequest, &departments)
 }
 
+func (c *context) DepartmentsByTaxId(taxId string, departments *ResponseDepartments) Context {
+	base, _ := url.Parse(c.apiEndpoint(APIEndpointDepartmentsByTaxId))
+
+	query := url.Values{}
+	query.Add(`tax_id`, taxId)
+
+	base.RawQuery = query.Encode()
+
+	if err := requests.Call().Get(requests.Params{
+		URL:  base.String(),
+		BODY: nil,
+		HEADERS: map[string]string{
+			echo.HeaderContentType:   "application/json",
+			echo.HeaderAuthorization: c.bearer,
+		},
+		TIMEOUT: 5,
+	}, &resRequest).Error(); err != nil {
+		c.err = err
+		return c
+	}
+	return c.handleRes(resRequest, &departments)
+}
+
 func (c *context) Department(deptId string, bizId string, department *ResponseDepartment) Context {
 	base, _ := url.Parse(strings.Replace(
 		c.apiEndpoint(APIEndpointDepartment), `:dept_id`, deptId, -1),
@@ -76,6 +99,29 @@ func (c *context) Roles(bizId string, roles *ResponseRoles) Context {
 
 	query := url.Values{}
 	query.Add(`biz_id`, bizId)
+
+	base.RawQuery = query.Encode()
+
+	if err := requests.Call().Get(requests.Params{
+		URL:  base.String(),
+		BODY: nil,
+		HEADERS: map[string]string{
+			echo.HeaderContentType:   "application/json",
+			echo.HeaderAuthorization: c.bearer,
+		},
+		TIMEOUT: 5,
+	}, &resRequest).Error(); err != nil {
+		c.err = err
+		return c
+	}
+	return c.handleRes(resRequest, &roles)
+}
+
+func (c *context) RolesByTaxId(taxId string, roles *ResponseRoles) Context {
+	base, _ := url.Parse(c.apiEndpoint(APIEndpointRolesByTaxId))
+
+	query := url.Values{}
+	query.Add(`tax_id`, taxId)
 
 	base.RawQuery = query.Encode()
 
