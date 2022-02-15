@@ -44,9 +44,11 @@ const (
 	//
 	APIEndpointBusinesses  = `/api/v3/business/service/business`
 	APIEndpointDepartments = `/api/v3/business/service/department`
+	APIEndpointDepartmentsByTaxId = `/api/v2/service/business/department`
 	APIEndpointDepartment  = `/api/v3/business/service/department/:dept_id`
 
 	APIEndpointRoles = `/api/v3/business/service/role`
+	APIEndpointRolesByTaxId = `/api/v2/service/business/role`
 	APIEndpointRole  = `/api/v3/business/service/role/:role_id`
 
 	APIEndpontDepartmentAndRoles = `/api/v3/business/service/dept-role`

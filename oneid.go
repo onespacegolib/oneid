@@ -27,8 +27,10 @@ type (
 	BusinessContext interface {
 		All(businesses *ResponseBusinesses) Context
 		Departments(bizId string, departments *ResponseDepartments) Context
+		DepartmentsByTaxId(taxId string, departments *ResponseDepartments) Context
 		Department(deptId string, bizId string, department *ResponseDepartment) Context
 		Roles(bizId string, roles *ResponseRoles) Context
+		RolesByTaxId(taxId string, roles *ResponseRoles) Context
 		Role(roleId string, bizId string, roles *ResponseRole) Context
 		DepartmentAndRoles(bizId string, deptRoles *ResponseDepartmentAndRoles) Context
 		DepartmentAndRole(deptRoleId string, bizId string, deptRole *ResponseDepartmentAndRole) Context
