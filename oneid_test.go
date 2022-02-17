@@ -177,6 +177,25 @@ func TestContext_AllBranch(t *testing.T) {
 	printStructJson(allBranchBusiness)
 }
 
+func TestContext_AccountPaginate(t *testing.T) {
+	pwd := PWD{
+		Username: "mpminimal",
+		Password: "mp12345678",
+	}
+	var res ResponseLoginPwdOne
+	if err := oneId.LoginPWD(pwd, &res).Error(); err != nil {
+		panic(err)
+	}
+	assert.Equal(t, pwd.Username, res.Username)
+
+	var accountPaginate ResponseAccountPaginate
+	if err := oneId.Bearer(res.AccessToken).Business().AccountPaginate(`1605248760`, `1000000`, `1`, &accountPaginate).Error(); err != nil {
+		//printStructJson(err)
+	}
+
+	printStructJson(accountPaginate)
+}
+
 func TestContext_Businesses(t *testing.T) {
 	pwd := PWD{
 		Username: "mpminimal",
@@ -194,6 +213,25 @@ func TestContext_Businesses(t *testing.T) {
 	}
 
 	printStructJson(businesses)
+}
+
+func TestContext_Department(t *testing.T) {
+	pwd := PWD{
+		Username: "mpminimal",
+		Password: "mp12345678",
+	}
+	var res ResponseLoginPwdOne
+	if err := oneId.LoginPWD(pwd, &res).Error(); err != nil {
+		panic(err)
+	}
+	assert.Equal(t, pwd.Username, res.Username)
+
+	var department ResponseDepartment
+	if err := oneId.Bearer(res.AccessToken).Business().Department(`17a6e230-8097-11eb-9a78-eda68aa3bede` ,`1605248760`, &department).Error(); err != nil {
+		//printStructJson(err)
+	}
+
+	printStructJson(department)
 }
 
 func TestContext_Departments(t *testing.T) {

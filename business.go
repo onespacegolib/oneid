@@ -30,6 +30,31 @@ func (c *context) AllBranch(taxId string, allBranchBusiness *ResponseAllBranchBu
 	return c.handleRes(resRequest, &allBranchBusiness)
 }
 
+func (c *context) AccountPaginate(bizId string, perPage string, page string, accountPaginate *ResponseAccountPaginate) Context {
+	base, _ := url.Parse(c.apiEndpoint(APIEndpointAccountPaginate))
+
+	query := url.Values{}
+	query.Add(`biz_id`, bizId)
+	query.Add(`per_page`, perPage)
+	query.Add(`page`, page)
+
+	base.RawQuery = query.Encode()
+
+	if err := requests.Call().Get(requests.Params{
+		URL:  base.String(),
+		BODY: nil,
+		HEADERS: map[string]string{
+			echo.HeaderContentType:   "application/json",
+			echo.HeaderAuthorization: c.bearer,
+		},
+		TIMEOUT: 5,
+	}, &resRequest).Error(); err != nil {
+		c.err = err
+		return c
+	}
+	return c.handleRes(resRequest, &accountPaginate)
+}
+
 func (c *context) All(businesses *ResponseBusinesses) Context {
 	if err := requests.Call().Get(requests.Params{
 		URL:  c.apiEndpoint(APIEndpointBusinesses),

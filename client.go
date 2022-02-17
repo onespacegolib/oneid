@@ -43,6 +43,7 @@ const (
 
 	//
 	APIEndpointAllBranchBusiness  = `/api/v3/business/service/get-all-branch-business`
+	APIEndpointAccountPaginate  = `/api/v3/business/service/account/paginate`
 	APIEndpointBusinesses  = `/api/v3/business/service/business`
 	APIEndpointDepartments = `/api/v3/business/service/department`
 	APIEndpointDepartment  = `/api/v3/business/service/department/:dept_id`
