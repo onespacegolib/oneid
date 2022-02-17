@@ -189,7 +189,7 @@ func TestContext_AccountPaginate(t *testing.T) {
 	assert.Equal(t, pwd.Username, res.Username)
 
 	var accountPaginate ResponseAccountPaginate
-	if err := oneId.Bearer(res.AccessToken).Business().AccountPaginate(`1605248760`, `1000000`, `1`, &accountPaginate).Error(); err != nil {
+	if err := oneId.Bearer(res.AccessToken).Business().AccountPaginate(`1605248760`, 1000000, 1, &accountPaginate).Error(); err != nil {
 		//printStructJson(err)
 	}
 
