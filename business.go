@@ -5,6 +5,7 @@ import (
 	requests "github.com/onespacegolib/http-requests"
 	"net/url"
 	"strings"
+	"strconv"
 )
 
 func (c *context) AllBranch(taxId string, allBranchBusiness *ResponseAllBranchBusiness) Context {
@@ -28,6 +29,31 @@ func (c *context) AllBranch(taxId string, allBranchBusiness *ResponseAllBranchBu
 		return c
 	}
 	return c.handleRes(resRequest, &allBranchBusiness)
+}
+
+func (c *context) AccountPaginate(bizId string, perPage int, page int, accountPaginate *ResponseAccountPaginate) Context {
+	base, _ := url.Parse(c.apiEndpoint(APIEndpointAccountPaginate))
+
+	query := url.Values{}
+	query.Add(`biz_id`, bizId)
+	query.Add(`per_page`, strconv.Itoa(perPage))
+	query.Add(`page`, strconv.Itoa(page))
+
+	base.RawQuery = query.Encode()
+
+	if err := requests.Call().Get(requests.Params{
+		URL:  base.String(),
+		BODY: nil,
+		HEADERS: map[string]string{
+			echo.HeaderContentType:   "application/json",
+			echo.HeaderAuthorization: c.bearer,
+		},
+		TIMEOUT: 5,
+	}, &resRequest).Error(); err != nil {
+		c.err = err
+		return c
+	}
+	return c.handleRes(resRequest, &accountPaginate)
 }
 
 func (c *context) All(businesses *ResponseBusinesses) Context {

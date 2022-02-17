@@ -594,3 +594,61 @@ type ResponseAllBranchBusiness struct {
 	ErrorMessage interface{} `json:"errorMessage"`
 	Code         int         `json:"code"`
 }
+
+type ResponseAccountPaginate struct {
+	Result string `json:"result"`
+	Data   struct {
+		AccountDetail []struct {
+			ID                  string `json:"id"`
+			FirstNameTh         string `json:"first_name_th"`
+			MiddleNameTh        string `json:"middle_name_th"`
+			LastNameTh          string `json:"last_name_th"`
+			FirstNameEng        string `json:"first_name_eng"`
+			MiddleNameEng       string `json:"middle_name_eng"`
+			LastNameEng         string `json:"last_name_eng"`
+			SpecialTitleNameTh  string `json:"special_title_name_th"`
+			SpecialTitleNameEng string `json:"special_title_name_eng"`
+			AccountTitleTh      string `json:"account_title_th"`
+			AccountTitleEng     string `json:"account_title_eng"`
+			IDCardType          string `json:"id_card_type"`
+			IDCardNum           string `json:"id_card_num"`
+			HashIDCardNum       string `json:"hash_id_card_num"`
+			AccountCategory     string `json:"account_category"`
+			AccountSubCategory  string `json:"account_sub_category"`
+			ThaiEmail           string `json:"thai_email"`
+			ThaiEmail2          string `json:"thai_email2"`
+			ThaiEmail3          string `json:"thai_email3"`
+			StatusCd            string `json:"status_cd"`
+			BirthDate           string `json:"birth_date"`
+			StatusDt            string `json:"status_dt"`
+			RegisterDt          string `json:"register_dt"`
+			AddressID           string `json:"address_id"`
+			CreatedAt           string `json:"created_at"`
+			CreatedBy           string `json:"created_by"`
+			UpdatedAt           string `json:"updated_at"`
+			UpdatedBy           string `json:"updated_by"`
+			Reason              string `json:"reason"`
+			TelNo               string `json:"tel_no"`
+			NameOnDocumentTh    string `json:"name_on_document_th"`
+			NameOnDocumentEng   string `json:"name_on_document_eng"`
+			BlockchainFlg       string `json:"blockchain_flg"`
+			HasEmployeeDetail   struct {
+				ID         string `json:"id"`
+				Email      string `json:"email"`
+				EmployeeId string `json:"employee_id"`
+				MobileNo   string `json:"mobile_no"`
+				AccountId  string `json:"account_id"`
+				BizId      string `json:"biz_id"`
+				CreatedAt  string `json:"created_at"`
+				CreatedBy  string `json:"created_by"`
+				UpdatedAt  string `json:"updated_at"`
+				UpdatedBy  string `json:"updated_by"`
+				DeletedAt  string `json:"deleted_at"`
+				NickName   string `json:"nick_name"`
+				ProfileImg string `json:"profile_img"`
+			} `json:"has_employee_detail"`
+		} `json:"account_detail"`
+	} `json:"data"`
+	ErrorMessage interface{} `json:"errorMessage"`
+	Code         int         `json:"code"`
+}
