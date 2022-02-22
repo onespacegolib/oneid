@@ -56,6 +56,31 @@ func (c *context) AccountPaginate(bizId string, perPage int, page int, accountPa
 	return c.handleRes(resRequest, &accountPaginate)
 }
 
+func (c *context) Account(bizId string, accountId string, account *ResponseAccount) Context {
+	base, _ := url.Parse(strings.Replace(
+		c.apiEndpoint(APIEndpointAccount), `:account_id`, accountId, -1),
+	)
+
+	query := url.Values{}
+	query.Add(`biz_id`, bizId)
+
+	base.RawQuery = query.Encode()
+
+	if err := requests.Call().Get(requests.Params{
+		URL:  base.String(),
+		BODY: nil,
+		HEADERS: map[string]string{
+			echo.HeaderContentType:   "application/json",
+			echo.HeaderAuthorization: c.bearer,
+		},
+		TIMEOUT: 5,
+	}, &resRequest).Error(); err != nil {
+		c.err = err
+		return c
+	}
+	return c.handleRes(resRequest, &account)
+}
+
 func (c *context) All(businesses *ResponseBusinesses) Context {
 	if err := requests.Call().Get(requests.Params{
 		URL:  c.apiEndpoint(APIEndpointBusinesses),

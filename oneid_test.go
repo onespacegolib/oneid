@@ -196,6 +196,25 @@ func TestContext_AccountPaginate(t *testing.T) {
 	printStructJson(accountPaginate)
 }
 
+func TestContext_Account(t *testing.T) {
+	pwd := PWD{
+		Username: "mpminimal",
+		Password: "mp12345678",
+	}
+	var res ResponseLoginPwdOne
+	if err := oneId.LoginPWD(pwd, &res).Error(); err != nil {
+		panic(err)
+	}
+	assert.Equal(t, pwd.Username, res.Username)
+
+	var account ResponseAccount
+	if err := oneId.Bearer(res.AccessToken).Business().Account(`1605248760`, `12632627704`, &account).Error(); err != nil {
+		//printStructJson(err)
+	}
+
+	printStructJson(account)
+}
+
 func TestContext_Businesses(t *testing.T) {
 	pwd := PWD{
 		Username: "mpminimal",

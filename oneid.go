@@ -27,6 +27,7 @@ type (
 	BusinessContext interface {
 		AllBranch(taxId string, allBranchBusiness *ResponseAllBranchBusiness) Context
 		AccountPaginate(bizId string, perPage int, page int, accountPaginate *ResponseAccountPaginate) Context
+		Account(bizId string, accountId string, account *ResponseAccount) Context
 		All(businesses *ResponseBusinesses) Context
 		Departments(bizId string, departments *ResponseDepartments) Context
 		Department(deptId string, bizId string, department *ResponseDepartment) Context

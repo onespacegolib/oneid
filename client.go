@@ -15,7 +15,7 @@ const (
 	APIEndpointServiceSharedToken = `/api/v2/service/shared-token`
 
 	// APIEndpointAccount ใช้สำหรับดึงข้อมูลผู้ใช้งาน https://api-id.one.th/#/16.%09API%20Get%20Data%20(Citizen)/account
-	APIEndpointAccount = `/api/account`
+	APIEndpointGetAccount = `/api/account`
 
 	// APIEndpointGetRefreshToken Login โดยใช้ Refresh Token https://api-id.one.th/#/6.%20API%20Refresh%20Token%20(Citizen)/oauth%40get_refresh_token
 	APIEndpointGetRefreshToken = `/api/oauth/get_refresh_token`
@@ -44,6 +44,7 @@ const (
 	//
 	APIEndpointAllBranchBusiness  = `/api/v3/business/service/get-all-branch-business`
 	APIEndpointAccountPaginate  = `/api/v3/business/service/account/paginate`
+	APIEndpointAccount  = `/api/v3/business/service/account/:account_id`
 	APIEndpointBusinesses  = `/api/v3/business/service/business`
 	APIEndpointDepartments = `/api/v3/business/service/department`
 	APIEndpointDepartment  = `/api/v3/business/service/department/:dept_id`

@@ -652,3 +652,157 @@ type ResponseAccountPaginate struct {
 	ErrorMessage interface{} `json:"errorMessage"`
 	Code         int         `json:"code"`
 }
+
+type ResponseAccount struct {
+	Result       string      `json:"result"`
+	Data         struct {
+		ID                  string `json:"id"`
+		FirstNameTh         string `json:"first_name_th"`
+		MiddleNameTh        string `json:"middle_name_th"`
+		LastNameTh          string `json:"last_name_th"`
+		FirstNameEng        string `json:"first_name_eng"`
+		MiddleNameEng       string `json:"middle_name_eng"`
+		LastNameEng         string `json:"last_name_eng"`
+		SpecialTitleNameTh  string `json:"special_title_name_th"`
+		SpecialTitleNameEng string `json:"special_title_name_eng"`
+		AccountTitleTh      string `json:"account_title_th"`
+		AccountTitleEng     string `json:"account_title_eng"`
+		IDCardType          string `json:"id_card_type"`
+		IDCardNum           string `json:"id_card_num"`
+		HashIDCardNum       string `json:"hash_id_card_num"`
+		AccountCategory     string `json:"account_category"`
+		AccountSubCategory  string `json:"account_sub_category"`
+		ThaiEmail           string `json:"thai_email"`
+		ThaiEmail2          string `json:"thai_email2"`
+		ThaiEmail3          string `json:"thai_email3"`
+		StatusCd            string `json:"status_cd"`
+		BirthDate           string `json:"birth_date"`
+		StatusDt            string `json:"status_dt"`
+		RegisterDt          string `json:"register_dt"`
+		AddressID           string `json:"address_id"`
+		CreatedAt           string `json:"created_at"`
+		CreatedBy           string `json:"created_by"`
+		UpdatedAt           string `json:"updated_at"`
+		UpdatedBy           string `json:"updated_by"`
+		Reason              string `json:"reason"`
+		TelNo               string `json:"tel_no"`
+		NameOnDocumentTh    string `json:"name_on_document_th"`
+		NameOnDocumentEng   string `json:"name_on_document_eng"`
+		BlockchainFlg       string `json:"blockchain_flg"`
+		HasEmployeeDetail   struct {
+			ID         string `json:"id"`
+			Email      string `json:"email"`
+			EmployeeId string `json:"employee_id"`
+			MobileNo   string `json:"mobile_no"`
+			AccountId  string `json:"account_id"`
+			BizId      string `json:"biz_id"`
+			CreatedAt  string `json:"created_at"`
+			CreatedBy  string `json:"created_by"`
+			UpdatedAt  string `json:"updated_at"`
+			UpdatedBy  string `json:"updated_by"`
+			DeletedAt  string `json:"deleted_at"`
+			NickName   string `json:"nick_name"`
+			ProfileImg string `json:"profile_img"`
+		} `json:"has_employee_detail"`
+		HasDepartment []struct {
+			Id               string      `json:"id"`
+			AccountId        string      `json:"account_id"`
+			BizId            string      `json:"biz_id"`
+			DeptRoleId       string      `json:"dept_role_id"`
+			DeptId           string      `json:"dept_id"`
+			RoleId           string      `json:"role_id"`
+			Status           string      `json:"status"`
+			SpId             string      `json:"sp_id"`
+			StartAt          interface{} `json:"start_at"`
+			ExpiredAt        interface{} `json:"expired_at"`
+			CreatedAt        string      `json:"created_at"`
+			CreatedBy        string      `json:"created_by"`
+			UpdatedAt        string      `json:"updated_at"`
+			UpdatedBy        string      `json:"updated_by"`
+			DeletedAt        interface{} `json:"deleted_at"`
+			Department       struct {
+				Id           string      `json:"id"`
+				DeptName     string      `json:"dept_name"`
+				DeptPosition string      `json:"dept_position"`
+				ParentDeptId string      `json:"parent_dept_id"`
+				CreatedAt    string      `json:"created_at"`
+				CreatedBy    string      `json:"created_by"`
+				UpdatedAt    string      `json:"updated_at"`
+				UpdatedBy    string      `json:"updated_by"`
+				DeletedAt    interface{} `json:"deleted_at"`
+			} `json:"department"`
+			DeptRole   *struct {
+				Id               string      `json:"id"`
+				BizId            string      `json:"biz_id"`
+				DeptId           string      `json:"dept_id"`
+				RoleId           string      `json:"role_id"`
+				DeptRolePosition string      `json:"dept_role_position"`
+				DeptRoleLevel    string      `json:"dept_role_level"`
+				ParentDeptRoleId *string     `json:"parent_dept_role_id"`
+				Status           string      `json:"status"`
+				CreatedAt        string      `json:"created_at"`
+				CreatedBy        string      `json:"created_by"`
+				UpdatedAt        string      `json:"updated_at"`
+				UpdatedBy        string      `json:"updated_by"`
+				DeletedAt        interface{} `json:"deleted_at"`
+			} `json:"dept_role"`
+		} `json:"has_department"`
+		HasRole      []struct {
+			Id               string      `json:"id"`
+			AccountId        string      `json:"account_id"`
+			BizId            string      `json:"biz_id"`
+			DeptRoleId       string      `json:"dept_role_id"`
+			DeptId           string      `json:"dept_id"`
+			RoleId           string      `json:"role_id"`
+			Status           string      `json:"status"`
+			SpId             string      `json:"sp_id"`
+			StartAt          interface{} `json:"start_at"`
+			ExpiredAt        interface{} `json:"expired_at"`
+			CreatedAt        string      `json:"created_at"`
+			CreatedBy        string      `json:"created_by"`
+			UpdatedAt        string      `json:"updated_at"`
+			UpdatedBy        string      `json:"updated_by"`
+			DeletedAt        interface{} `json:"deleted_at"`
+			Role struct {
+				Id        string      `json:"id"`
+				RoleName  string      `json:"role_name"`
+				RoleLevel string      `json:"role_level"`
+				CreatedAt string      `json:"created_at"`
+				CreatedBy string      `json:"created_by"`
+				UpdatedAt string      `json:"updated_at"`
+				UpdatedBy string      `json:"updated_by"`
+				DeletedAt interface{} `json:"deleted_at"`
+			} `json:"role"`
+			Department       struct {
+				Id           string      `json:"id"`
+				DeptName     string      `json:"dept_name"`
+				DeptPosition string      `json:"dept_position"`
+				ParentDeptId string      `json:"parent_dept_id"`
+				CreatedAt    string      `json:"created_at"`
+				CreatedBy    string      `json:"created_by"`
+				UpdatedAt    string      `json:"updated_at"`
+				UpdatedBy    string      `json:"updated_by"`
+				DeletedAt    interface{} `json:"deleted_at"`
+			} `json:"department"`
+			DeptRole   *struct {
+				Id               string      `json:"id"`
+				BizId            string      `json:"biz_id"`
+				DeptId           string      `json:"dept_id"`
+				RoleId           string      `json:"role_id"`
+				DeptRolePosition string      `json:"dept_role_position"`
+				DeptRoleLevel    string      `json:"dept_role_level"`
+				ParentDeptRoleId *string     `json:"parent_dept_role_id"`
+				Status           string      `json:"status"`
+				CreatedAt        string      `json:"created_at"`
+				CreatedBy        string      `json:"created_by"`
+				UpdatedAt        string      `json:"updated_at"`
+				UpdatedBy        string      `json:"updated_by"`
+				DeletedAt        interface{} `json:"deleted_at"`
+			} `json:"dept_role"`
+			Permission []interface{} `json:"permission"`
+		} `json:"has_role"`
+		HasPermission []interface{} `json:"has_permission"`
+	} `json:"data"`
+	Errormessage string      `json:"errorMessage"`
+	Responsecode int64       `json:"responseCode"`
+}
