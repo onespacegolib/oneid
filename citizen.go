@@ -7,7 +7,7 @@ import (
 
 func (c *context) GetAccount(account *ResponseGetAccount) Context {
 	if err := requests.Call().Get(requests.Params{
-		URL:  c.apiEndpoint(APIEndpointAccount),
+		URL:  c.apiEndpoint(APIEndpointGetAccount),
 		BODY: nil,
 		HEADERS: map[string]string{
 			echo.HeaderContentType:   "application/json",
