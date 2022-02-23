@@ -158,7 +158,7 @@ func TestContext_GetSharedToken(t *testing.T) {
 	assert.NotEmpty(t, shared.Data.SharedToken)
 }
 
-func TestContext_AllBranch(t *testing.T) {
+func TestContext_LoginAccount(t *testing.T) {
 	pwd := PWD{
 		Username: "mpminimal",
 		Password: "mp12345678",
@@ -169,12 +169,12 @@ func TestContext_AllBranch(t *testing.T) {
 	}
 	assert.Equal(t, pwd.Username, res.Username)
 
-	var allBranchBusiness ResponseAllBranchBusiness
-	if err := oneId.Bearer(res.AccessToken).Business().AllBranch(`3467976236700`, &allBranchBusiness).Error(); err != nil {
+	var loginAccount ResponseLoginAccount
+	if err := oneId.Bearer(res.AccessToken).Business().LoginAccount(`3467976236700`, &loginAccount).Error(); err != nil {
 		//printStructJson(err)
 	}
 
-	printStructJson(allBranchBusiness)
+	printStructJson(loginAccount)
 }
 
 func TestContext_AccountPaginate(t *testing.T) {

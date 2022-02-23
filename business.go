@@ -8,13 +8,15 @@ import (
 	"strconv"
 )
 
-func (c *context) AllBranch(taxId string, allBranchBusiness *ResponseAllBranchBusiness) Context {
-	base, _ := url.Parse(c.apiEndpoint(APIEndpointAllBranchBusiness))
+func (c *context) LoginAccount(taxId string, loginAccount *ResponseLoginAccount) Context {
+	base, _ := url.Parse(strings.Replace(
+		c.apiEndpoint(APIEndpointLoginAccount), `:tax_id`, taxId, -1),
+	)
 
-	query := url.Values{}
-	query.Add(`tax_id`, taxId)
+	// query := url.Values{}
+	// query.Add(`tax_id`, taxId)
 
-	base.RawQuery = query.Encode()
+	// base.RawQuery = query.Encode()
 
 	if err := requests.Call().Get(requests.Params{
 		URL:  base.String(),
@@ -28,7 +30,7 @@ func (c *context) AllBranch(taxId string, allBranchBusiness *ResponseAllBranchBu
 		c.err = err
 		return c
 	}
-	return c.handleRes(resRequest, &allBranchBusiness)
+	return c.handleRes(resRequest, &loginAccount)
 }
 
 func (c *context) AccountPaginate(bizId string, perPage int, page int, accountPaginate *ResponseAccountPaginate) Context {
