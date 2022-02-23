@@ -42,7 +42,7 @@ const (
 	*/
 
 	//
-	APIEndpointAllBranchBusiness  = `/api/v3/business/service/get-all-branch-business`
+	APIEndpointLoginAccount  = `/api/service/business/account/:tax_id`
 	APIEndpointAccountPaginate  = `/api/v3/business/service/account/paginate`
 	APIEndpointAccount  = `/api/v3/business/service/account/:account_id`
 	APIEndpointBusinesses  = `/api/v3/business/service/business`

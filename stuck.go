@@ -583,13 +583,74 @@ type ResponseBusinesses struct {
 	Code         int         `json:"code"`
 }
 
-type ResponseAllBranchBusiness struct {
+type ResponseLoginAccount struct {
 	Result string `json:"result"`
 	Data   []struct {
-		BizId            string `json:"biz_id"`
-		NameOnDocumentTh string `json:"name_on_document_th"`
-		BranchNo         string `json:"branch_no"`
-		BranchName       string `json:"branch_name"`
+		ID                  string `json:"id"`
+		FirstNameTh         string `json:"first_name_th"`
+		MiddleNameTh        string `json:"middle_name_th"`
+		LastNameTh          string `json:"last_name_th"`
+		FirstNameEng        string `json:"first_name_eng"`
+		MiddleNameEng       string `json:"middle_name_eng"`
+		LastNameEng         string `json:"last_name_eng"`
+		SpecialTitleNameTh  string `json:"special_title_name_th"`
+		SpecialTitleNameEng string `json:"special_title_name_eng"`
+		AccountTitleTh      string `json:"account_title_th"`
+		AccountTitleEng     string `json:"account_title_eng"`
+		IDCardType          string `json:"id_card_type"`
+		IDCardNum           string `json:"id_card_num"`
+		HashIDCardNum       string `json:"hash_id_card_num"`
+		AccountCategory     string `json:"account_category"`
+		AccountSubCategory  string `json:"account_sub_category"`
+		ThaiEmail           string `json:"thai_email"`
+		ThaiEmail2          string `json:"thai_email2"`
+		ThaiEmail3          string `json:"thai_email3"`
+		StatusCd            string `json:"status_cd"`
+		BirthDate           string `json:"birth_date"`
+		RegisterDt          string `json:"register_dt"`
+		UpdatedAt           string `json:"updated_at"`
+		TelNo               string `json:"tel_no"`
+		NameOnDocumentTh    string `json:"name_on_document_th"`
+		NameOnDocumentEng   string `json:"name_on_document_eng"`
+		LastUpdate          string `json:"last_update"`
+		MobileNo            string `json:"mobile_no"`
+		Email               string `json:"email"`
+		BranchName          string `json:"branch_name"`
+		BranchNo            string `json:"branch_no"`
+		BlockchainFlg       string `json:"blockchain_flg"`
+		Address struct {
+			HouseNo                string      `json:"house_no"`
+			MooBan                 interface{} `json:"moo_ban"`
+			BuildingName           interface{} `json:"building_name"`
+			Street                 string      `json:"street"`
+			Soi                    string      `json:"soi"`
+			RoomNo                 interface{} `json:"room_no"`
+			Floor                  interface{} `json:"floor"`
+			FaxNumber              interface{} `json:"fax_number"`
+			Type                   string      `json:"type"`
+			HouseCode              interface{} `json:"house_code"`
+			MooNo                  interface{} `json:"moo_no"`
+			DataDetail             interface{} `json:"data_detail"`
+			Yaek                   string      `json:"yaek"`
+			MappingAccountId       string      `json:"mapping_account_id"`
+			MappingAddressId       string      `json:"mapping_address_id"`
+			MappingCreatedAt       string      `json:"mapping_created_at"`
+			MappingUpdatedAt       string      `json:"mapping_updated_at"`
+			MappingStatusCd        string      `json:"mapping_status_cd"`
+			MappingPrimaryFlg      string      `json:"mapping_primary_flg"`
+			CountryName            string      `json:"country_name"`
+			CountryAlpha2          string      `json:"country_alpha2"`
+			CountryAlpha3          string      `json:"country_alpha3"`
+			CountryNumeric         string      `json:"country_numeric"`
+			CountryIso             string      `json:"country_iso"`
+			ZipcodeAmphoe          string      `json:"zipcode_amphoe"`
+			ZipcodeTambon          string      `json:"zipcode_tambon"`
+			ZipcodeProvince        string      `json:"zipcode_province"`
+			ZipcodeZipcode         string      `json:"zipcode_zipcode"`
+			ZipcodeSubdistrictCode string      `json:"zipcode_subdistrict_code"`
+			ZipcodeDistrictCode    string      `json:"zipcode_district_code"`
+			ZipcodeProvinceCode    string      `json:"zipcode_province_code"`
+		} `json:"address"`
 	} `json:"data"`
 	ErrorMessage interface{} `json:"errorMessage"`
 	Code         int         `json:"code"`
